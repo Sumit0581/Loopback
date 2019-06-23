@@ -1,0 +1,27 @@
+{
+  "name": "Teacher",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "Experience": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "courses": {
+      "type": "hasAndBelongsToMany",
+      "model": "Course",
+      "foreignKey": "teacherId",
+      "through": "CourseTeacher"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

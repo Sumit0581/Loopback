@@ -1,0 +1,37 @@
+{
+  "name": "Course",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "students": {
+      "type": "hasAndBelongsToMany",
+      "model": "Student",
+      "foreignKey": "courseId",
+      "through": "StudentCourse"
+    },
+    "teachers": {
+      "type": "hasAndBelongsToMany",
+      "model": "Teacher",
+      "foreignKey": "courseId",
+      "through": "CourseTeacher"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "teachers",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
